@@ -1,0 +1,47 @@
+@mixin text-style(
+  $font-family,
+  $font-size,
+  $font-weight,
+  $line-height,
+  $color
+) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+%button-style {
+  @include text-style("Gilroy", 16px, 800, 24px, var(--text-title, #2e2e2e));
+  padding: 24px 40px;
+  font-variant-numeric: lining-nums proportional-nums;
+  text-transform: uppercase;
+  border-radius: 80px;
+  background: #fff;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+%service-text-style {
+  @include text-style("Gilroy", 35px, 600, 41px, var(--white-white-100, #fff));
+}
+
+%main-text {
+  @include text-style("Gilroy", 60px, 800, 68px, #fff);
+}
+
+%normal {
+  @include text-style("Gilroy", 16px, 600, 24px, var(--base-white, #fff));
+}
+
+%main-info {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @include text-style("Gilroy", 24px, 600, 27px, var(--text-white, #fff));
+}
+
+%sub-title {
+  @include text-style("Gilroy", 50px, 800, 68px, var(--text-white, #fff));
+}
