@@ -1,10 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.scss";
 import "./styles/main.scss";
-import AOS from "aos";
+import * as AOS from "aos";
 import "aos/dist/aos.css";
+
+// ii18n
 import "./i18n.ts";
 
 //slider styles

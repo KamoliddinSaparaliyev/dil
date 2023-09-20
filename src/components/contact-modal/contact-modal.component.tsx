@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { CHAT_ID, TOKEN, request } from "../../server";
-import { FormData } from "../../types";
-import useModalStore from "../../state/modalStore";
 import close from "../../assets/icons/close.svg";
 
 //modal styles
 import "./contact-modal.scss";
-import useAlertStore from "../../state/succesStore";
 import { toast } from "react-toastify";
+import useModalStore from "../../state/modalStore.ts";
+import useAlertStore from "../../state/succesStore.ts";
+import { FormData } from "../../types/index.ts";
+import { CHAT_ID, TOKEN, request } from "../../server.ts";
 
 export const ContactModal = () => {
   const { isModalOpen, closeModal } = useModalStore();
-  const {openAlert, closeAlert} = useAlertStore();
+  const { openAlert, closeAlert } = useAlertStore();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -26,7 +26,7 @@ export const ContactModal = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const apiToken = TOKEN;
-    const chatId = CHAT_ID; 
+    const chatId = CHAT_ID;
     const message = `
       New message from user:
       👤 Name: ${formData.name}
@@ -40,12 +40,12 @@ export const ContactModal = () => {
         chat_id: chatId,
         text: message,
       });
-      
+
       setFormData({ name: "", email: "", message: "" });
       closeModal();
-      openAlert()
+      openAlert();
       setTimeout(() => closeAlert(), 2000);
-      toast.success("Message sent successfully")
+      toast.success("Message sent successfully");
     } catch (error) {
       toast.error("Error sending message to Telegram:");
     }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Container } from "../../layouts/container";
-import { ContactModal } from "../contact-modal";
-import { Menu } from "../menu";
+import { ContactModal } from "../contact-modal/contact-modal.component.js";
+import { Menu } from "../menu/nav-menu.component.js";
 
 //images
 import logo from "../../assets/icons/logo.png";
@@ -9,10 +8,14 @@ import menu from "../../assets/icons/menu.svg";
 
 //header styles
 import "./header.scss";
-import { SuccecAlert } from "../succes-alert";
+import { SuccecAlert } from "../succes-alert/succes.component.js";
+import { Switch } from "../switch/switch.component.js";
+import { useTranslation } from "react-i18next";
+import { Container } from "../../layouts/container/container.component.tsx";
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { t } = useTranslation();
 
   const showMenu = () => {
     setIsModalVisible(true);
@@ -44,17 +47,22 @@ export const Header = () => {
           <a href="#">
             <img className="logo" width={100} src={logo} alt="logo" />
           </a>
-          <ul className="header__nav--list">
-            <li>
-              <a href="#service">Xizmatlar</a>
-            </li>
-            <li>
-              <a href="#work">Biz haqimizda</a>
-            </li>
-            <li>
-              <a href="#contact">Aloqa</a>
-            </li>
-          </ul>
+
+          <div className="header__nav--box">
+            <ul className="header__nav--list">
+              <li>
+                <a href="#service">{t("xizmatlar")}</a>
+              </li>
+              <li>
+                <a href="#work">{t("biz_haqimizda")}</a>
+              </li>
+              <li>
+                <a href="#contact">{t("aloqa")}</a>
+              </li>
+            </ul>
+            <Switch />
+          </div>
+
           <button onClick={showMenu} className="menu_btn">
             <img src={menu} alt="menu-icon" />
           </button>

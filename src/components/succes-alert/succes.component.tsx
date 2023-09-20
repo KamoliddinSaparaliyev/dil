@@ -1,5 +1,5 @@
-import useAlertStore from "../../state/succesStore";
 import succes from "../../assets/icons/Outline Success.svg";
+import useAlertStore from "../../state/succesStore.ts";
 
 //modal styles
 import "./succes-alert.scss";

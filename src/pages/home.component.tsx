@@ -1,16 +1,16 @@
 import { Fragment, useEffect, useState } from "react";
-import { Container } from "../layouts/container";
-import { Section } from "../components/section";
-import { Button } from "../components/button";
-import { ContactData, digitalData, serviceData } from "../data";
-import { ServiceCard } from "../components/service-card";
-import { DigitalCard } from "../components/digital-card";
+import { Container } from "../layouts/container/container.component.tsx";
+import { Section } from "../components/section/section.component.tsx";
+import { Button } from "../components/button/button.component.tsx";
+import { ContactData, serviceData } from "../data/index.ts";
+import { ServiceCard } from "../components/service-card/service-card.component.tsx";
 import { BiSolidMap } from "react-icons/bi";
-import { BsTelephoneFill } from "react-icons/bs";
 import { SiMetrodeparis } from "react-icons/si";
+import { BsTelephoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+
 import Slider from "react-slick";
-import useModalStore from "../state/modalStore";
+import useModalStore from "../state/modalStore.ts";
 
 //images
 import right_bg from "../assets/images/hero-bg.png";
@@ -20,11 +20,12 @@ import main_bg from "../assets/images/main-bg.png";
 
 //Home styles
 import "./home.scss";
+import { useTranslation } from "react-i18next";
 export const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   const { openModal } = useModalStore();
   const { telefon, emails, location, station, title, message } = ContactData;
-
+  const { t } = useTranslation();
   useEffect(() => {
     function handleResize() {
       setIsMobile(window.innerWidth <= 703);
@@ -67,16 +68,9 @@ export const Home = () => {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <h1 className="title">Sinovlar labaratoriyasi departamenti</h1>
-            <Button text="Batafsil" />
+            <h1 className="title">{t("hero_title")}</h1>
+            <Button text={t("btn_title")} />
           </div>
-          {/* <img
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            className="hero_img"
-            src={phone3}
-            alt="hero image"
-          /> */}
         </Container>
         <img className="right_bg" src={right_bg} alt="bg-light" />
         <img className="left_bg" src={left_bg} alt="" />
@@ -84,7 +78,7 @@ export const Home = () => {
       <Section id="service" className="service">
         <Container>
           <h1 className="service__title" data-aos="zoom-in">
-            Xizmatlar
+            {t("xizmatlar")}
           </h1>
           <div
             className="service__card--row"
@@ -92,8 +86,8 @@ export const Home = () => {
             data-aos-anchor-placement="top-center"
           >
             {!isMobile ? (
-              serviceData.map((res, id) => (
-                <ServiceCard key={id} text={res.name} />
+              serviceData.map((_, i) => (
+                <ServiceCard key={i} text={t(`services_${i + 1}`)} />
               ))
             ) : (
               <Slider {...settings}>

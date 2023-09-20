@@ -1,1 +1,1 @@
-export * from './succes.component'
+export * from "./succes.component.tsx";

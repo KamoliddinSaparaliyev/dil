@@ -1,7 +1,7 @@
-import { ContainerType } from '../../types';
+import { ContainerType } from "../../types/index.ts";
 
 //container
-import './container.scss';
+import "./container.scss";
 export const Container = ({ children }: ContainerType) => {
-	return <div className="container">{children}</div>;
+  return <div className="container">{children}</div>;
 };

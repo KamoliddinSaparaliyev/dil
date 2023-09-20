@@ -1,0 +1,83 @@
+.switch {
+  display: flex;
+  justify-content: center;
+}
+
+.switch__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: #f9f9f9;
+  border: 1px solid #ebebeb;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin: 0px 1em 0px 0px;
+}
+
+.switch__wrapper input {
+  display: none;
+}
+
+.switch__wrapper input:checked + .switch__slider:before {
+  transform: translateX(30px);
+}
+
+.switch__wrapper input:checked ~ div:after {
+  color: #ffffff;
+  transition: color 0.3s ease 0s;
+}
+
+.switch__wrapper input:checked ~ div:before {
+  color: #919191;
+  transition: color 0.3s ease 0s;
+}
+
+.switch div::before {
+  content: "UZ";
+  position: relative;
+  z-index: 5;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  bottom: 0px;
+  left: 5px;
+  cursor: pointer;
+  transition: color 0.3s ease 0s;
+}
+
+.switch div::after {
+  content: "RU";
+  position: relative;
+  z-index: 5;
+  font-weight: 700;
+  font-size: 14px;
+  color: #919191;
+  bottom: 0px;
+  left: 17px;
+  cursor: pointer;
+  transition: color 0.3s ease 0s;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: 15px;
+}
+
+.switch__slider::before {
+  position: absolute;
+  content: "";
+  top: -1px;
+  left: -1px;
+  width: 30px;
+  height: 30px;
+  background-color: #4eaae0;
+  transition: all 0.4s ease 0s;
+  border-radius: 15px;
+}

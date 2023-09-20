@@ -1,12 +1,12 @@
 import { MenuType } from "../../types";
-
 import close from "../../assets/icons/close.svg";
 import phone from "../../assets/icons/phone-outgoing.svg";
-// import phone2 from "../../assets/images/logo2.jpg";
 
 //menu styles
 import "./menu.scss";
+import { useTranslation } from "react-i18next";
 export const Menu = ({ visible, hideMenu }: MenuType) => {
+  const { t } = useTranslation();
   return (
     <div className={`menu ${visible ? " open" : "close"}`}>
       <button onClick={hideMenu} className="close__btn">
@@ -15,22 +15,17 @@ export const Menu = ({ visible, hideMenu }: MenuType) => {
       <ul className="menu__list">
         <li>
           <a onClick={hideMenu} href="#service">
-            Услуги
+            {t("xizmatlar")}
           </a>
         </li>
         <li>
           <a onClick={hideMenu} href="#work">
-            Как мы работаем
-          </a>
-        </li>
-        <li>
-          <a onClick={hideMenu} href="#digital">
-            Результат
+            {t("biz_haqimizda")}
           </a>
         </li>
         <li>
           <a onClick={hideMenu} href="#contact">
-            Заказать
+            {t("aloqa")}
           </a>
         </li>
       </ul>

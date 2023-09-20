@@ -2,6 +2,8 @@ import i18n, { InitOptions } from "i18next";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector"; // Import LanguageDetector
+import TranslationUz from "./assets/locales/uz/translation.json";
+import TranslationRu from "./assets/locales/ru/translation.json";
 
 // Define a TypeScript interface for the i18n configuration
 interface CustomI18nConfig extends InitOptions {
@@ -23,7 +25,7 @@ interface CustomI18nConfig extends InitOptions {
 
 const localStorageLang = localStorage.getItem("lang");
 const i18nConfig: CustomI18nConfig = {
-  lng: localStorageLang as string | undefined, // Use type assertion to handle null
+  lng: localStorageLang as string | "ru", // Use type assertion to handle null
   fallbackLng: "uz",
   debug: false,
   react: {
@@ -34,6 +36,14 @@ const i18nConfig: CustomI18nConfig = {
     lookupLocalStorage: "lang",
     lookupCookie: "i18next",
     lookupSessionStorage: "i18nextLng",
+  },
+  resources: {
+    uz: {
+      translation: TranslationUz,
+    },
+    ru: {
+      translation: TranslationRu,
+    },
   },
   interpolation: {
     escapeValue: false,

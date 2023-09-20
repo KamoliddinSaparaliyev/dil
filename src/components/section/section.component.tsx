@@ -1,4 +1,9 @@
-import { SectionType } from "../../types";
+import { SectionType } from "../../types/index.ts";
+
 export const Section = ({ children, id }: SectionType) => {
-	return <section id={id} className={id}>{children}</section>;
+  return (
+    <section id={id} className={id}>
+      {children}
+    </section>
+  );
 };
